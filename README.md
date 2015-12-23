@@ -1,10 +1,23 @@
-# Links
+# Links & Useful Info
 
 [Language Documentation](https://golang.org/doc/effective_go.html)
 
 [Tutorial](https://tour.golang.org/welcome/1)
 
 [Project Setup](https://golang.org/doc/code.html)
+
+Offline access to documentation at http://127.0.0.1:6060/
+
+```
+$ godoc -http=:6060
+```
+
+Offline access to tour
+
+```
+$ cd $GOPATH/bin
+$ ./gotour
+```
 
 # Basics
 
