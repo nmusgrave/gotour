@@ -14,4 +14,5 @@ func main() {
   fmt.Println("Some num", rand.Intn(10), math.Pi)
   basics()
   flow()
+  types()
 }

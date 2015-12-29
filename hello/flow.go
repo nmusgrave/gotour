@@ -61,21 +61,53 @@ func giveGreeting() string {
   return "hi"
 }
 
+func run() {
+  defer func() {
+    if r := recover(); r != nil {
+      // This will catch the panic, and restore normal execution
+      // By putting this inside a defer, ensures that any panic from any function
+      //  in body will be caught
+      fmt.Println("Recover in run()", r)
+    }
+  }()
+  count(0)
+  fmt.Println("Returned normally from count()")
+}
+
+func count(i int) {
+  if i > 3 {
+    fmt.Println("Panicking", i)
+    panic(fmt.Sprintf("%v", i))
+  }
+  // These will execute in reverse order, as unwind call stack from panic
+  defer fmt.Println("defer in count()", i)
+  // These will execute in increasing order, before panic
+  fmt.Println("count() of ", i)
+  count(i + 1)
+}
+
 func flow() {
   fmt.Println("-- Basics of Flow Control --")
 
+  // infinite loop
+  //for {}
+
   // Arguments to defered function evaluated early, function invoked when surrounding function returns
+  // 'defer' pushes function calls onto stack
+  // Allowed to modify named return variables
+  // Usually for cleanup operations
   defer fmt.Println("Greeting:", giveGreeting())
 
   fmt.Println(summer(5, 2))
   fmt.Println(boundedSummer(5, 31))
 
-  // infinite loop
-  //for {}
-
   fmt.Println(pow(2, 3, 7))
   fmt.Println(sqrt(70))
 
   identifyOS()
+
+  // Demonstration of handling defer, panic, recover
+  run()
+  fmt.Println("Returned from run()")
 
 }
