@@ -10,7 +10,7 @@ import (
 var (
   p *int
   a [3]int
-  f func(func(int, int) int, int) int
+  fun func(func(int, int) int, int) int
 )
 
 // Constants use 'const' rather than 'var' keyword
@@ -67,8 +67,8 @@ func basics() {
 
   // Function pointers
   fmt.Println(mult(add, 5))
-  f = mult
-  fmt.Println(f(add, 5))
+  fun = mult
+  fmt.Println(fun(add, 5))
 
   // Return multiple results
   // := short assignment used in place of 'var', handles types implicitly. For variables inside functions
