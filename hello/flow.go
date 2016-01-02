@@ -30,7 +30,7 @@ func pow(x, n, lim float64) float64 {
     return v
   } else {
     // 'v' can be used in subsequent conditionals, too
-    fmt.Printf("%g >= %g\n", v, lim)
+    fmt.Printf("%f >= %g\n", v, lim)
   }
   return lim
 }
@@ -96,13 +96,19 @@ func flow() {
   // 'defer' pushes function calls onto stack
   // Allowed to modify named return variables
   // Usually for cleanup operations
-  defer fmt.Println("Greeting:", giveGreeting())
+  defer fmt.Println("defered greeting:", giveGreeting())
 
-  fmt.Println(summer(5, 2))
-  fmt.Println(boundedSummer(5, 31))
+  x := 5
+  n := 2
+  fmt.Printf("%d summed %d times: %d\n", x, n, summer(x, n))
+  n = 31
+  fmt.Printf("sum %d while result < %d: %d\n", x, n, boundedSummer(x, n))
 
-  fmt.Println(pow(2, 3, 7))
-  fmt.Println(sqrt(70))
+  base := 2.0
+  exp := 3.0
+  lim := 7.0
+  fmt.Printf("%g ^ %g = %g if under limit %g\n", base, exp, pow(base, exp, lim), lim)
+  fmt.Println("sqrt(70) is 8.36660:", sqrt(70))
 
   identifyOS()
 
