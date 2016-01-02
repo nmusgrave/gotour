@@ -15,4 +15,5 @@ func main() {
   basics()
   flow()
   types()
+  methods()
 }
