@@ -3,6 +3,7 @@ package main
 import (
   "golang.org/x/tour/wc"
   "strings"
+  "fmt"
 )
 
 /*
@@ -18,5 +19,6 @@ func WordCount(s string) map[string]int {
 }
 
 func runWordCount() {
+  fmt.Println("* Maps Exercise *")
   wc.Test(WordCount)
 }

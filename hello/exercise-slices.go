@@ -1,6 +1,9 @@
 package main
 
-import "golang.org/x/tour/pic"
+import (
+  "golang.org/x/tour/pic"
+  "fmt"
+)
 
 /*
  * Returns slice of length dy
@@ -21,5 +24,6 @@ func Pic(dx, dy int) [][]uint8 {
 }
 
 func runPic() {
+  fmt.Println("* Slices Exercise *")
   pic.Show(Pic)
 }
