@@ -16,4 +16,5 @@ func main() {
   flow()
   types()
   methods()
+  concurrency()
 }

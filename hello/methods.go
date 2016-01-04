@@ -40,6 +40,7 @@ func methods() {
   errors()
   readers()
   servers()
+  images()
 }
 
 type MyFloat float64

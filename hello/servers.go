@@ -18,8 +18,10 @@ func servers() {
   fmt.Println("HTTP package serves requests using any value impl Handler")
 
   var h Hello
-  err := http.ListenAndServe("localhost:4000", h)
-  if err := nil {
-    log.Fatal(err)
-  }
+  // go to this with browser to see result
+
+  // NOTE uncomment below to launch servers
+  //log.Fatal(http.ListenAndServe("localhost:8000", h))
+  //runHttpHandlers()
+  fmt.Println(log.Ldate, h)
 }
