@@ -33,19 +33,6 @@ func fib(n int, c chan int) {
   //c <- 0
 }
 
-func fibSelect(c chan int, quit chan int) {
-  x, y := 0, 1
-  for {
-    select {
-    case c <- x:
-      x, y = y, x+y
-    case <-quit:
-      fmt.Println("quit")
-      return
-    }
-  }
-}
-
 func channels() {
   fmt.Println("* Channels *")
   fmt.Println("Typed way to send & receive msgs. Data flows in direction of arrow.")
@@ -83,10 +70,25 @@ func channels() {
       break
     }
   }
+}
 
+func fibSelect(c chan int, quit chan int) {
+  x, y := 0, 1
+  for {
+    select {
+    case c <- x:
+      x, y = y, x+y
+    case <-quit:
+      fmt.Println("quit")
+      return
+    }
+  }
+}
+
+func selects() {
   fmt.Println("select: goroutine waits on multiple connections. Blocks till a case can run. Chooses randomly if multiple ready.")
   quit := make(chan int)
-  ch = make(chan int)
+  ch := make(chan int)
   go func() {
     for i := 0; i < 10; i++ {
       fmt.Println(<-ch)
@@ -123,4 +125,9 @@ func concurrency() {
   say("hello")
 
   channels()
+  selects()
+  mutex()
+
+  // Exercises
+  runEquivTrees()
 }
